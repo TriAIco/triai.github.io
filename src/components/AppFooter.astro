@@ -1,0 +1,59 @@
+---
+import BrandIcon from "./BrandIcon.astro";
+import Container from "./Container.astro";
+
+type Link = {
+  title: string;
+  url: string;
+};
+
+---
+
+<footer class="w-full bg-gray-100 dark:bg-gray-900 py-16">
+  <div class="md:px-12 lg:px-28">
+    <div class="container m-auto space-y-6 text-gray-600 dark:text-gray-300">
+      <img src="TriAi-vectorlogo.png" alt="TriAi logo" class="w-24" />
+
+      <ul
+        role="list"
+        class="flex flex-col items-center justify-center gap-4 py-4 sm:flex-row sm:gap-8"
+      >
+        <li role="listitem"><a href="/#" class="hover:text-primary">Home</a></li>
+        <li role="listitem"><a href="/#Services" class="hover:text-primary">Services</a></li>
+        <li role="listitem"><a href="/#get-started" class="hover:text-primary">Contact Us</a></li>
+
+      </ul>
+      <div class="m-auto flex w-max items-center justify-between space-x-4">
+        <a href="tel:+243996660436" title="contact" aria-label="call">
+          <img class="col-span-2 max-h-8 w-full object-contain lg:col-span-1" src="call.png" alt="Transistor" width="32" height="32">
+        </a>
+        <a href="mailto:triaicobusiness@gmail.com" title="mail" aria-label="send mail">
+          <img class="col-span-2 max-h-8 w-full object-contain lg:col-span-1" src="uiw--mail.png" alt="Transistor" width="32" height="32">
+        </a>
+
+        <a href="https://www.instagram.com/triai.co/" title="instagram" target="blank" aria-label="instagram">
+          <img class="col-span-2 max-h-8 w-full object-contain lg:col-span-1" src="fe--instagram.png" alt="Transistor" width="64" height="64">
+
+        </a>
+
+
+        <a href="https://www.linkedin.com/company/triaico/" title="linkedin" target="blank" aria-label="linkedin">
+          <img class="col-span-2 max-h-6 w-full object-contain lg:col-span-1" src="bi--linkedin.png" alt="Transistor" width="32" height="32">
+        </a>
+      </div>
+
+      <div class="text-center">
+        <span class="text-sm tracking-wide"
+          >Copyright © TriAI <span id="year"></span> | All right reserved</span
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
