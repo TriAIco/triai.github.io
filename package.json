@@ -5,11 +5,13 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host",
+    "start": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailus/themer": "^0.0.5",
@@ -23,6 +25,7 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^5.1.0"
+    "@astrojs/tailwind": "^5.1.0",
+    "gh-pages": "^6.1.1"
   }
 }
