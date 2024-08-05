@@ -1,0 +1,30 @@
+name: Test CSS Links on gh-pages
+
+on:
+  push:
+    branches:
+      - gh-pages
+  pull_request:
+    branches:
+      - gh-pages
+
+jobs:
+  test-links:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages  # Ensure we're checking out the gh-pages branch
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Specify your Node.js version here
+
+    - name: Install LinkChecker
+      run: npm install -g linkchecker
+
+    - name: Run LinkChecker
+      run: linkchecker dist/index.html --check-extern --file --no-check-certificate
