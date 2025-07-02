@@ -1,0 +1,44 @@
+name: Build and Deploy to Prod Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required to push to another branch
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build the Project
+        run: npm run build
+
+      - name: Deploy to Prod Branch
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # create worktree for prod branch
+          git worktree add prod-branch prod
+
+          # remove old files and copy new build
+          rm -rf prod-branch/*
+          cp -r build/* prod-branch/
+
+          cd prod-branch
+          git add .
+          git commit -m "Deploy production build from main - $GITHUB_SHA" || echo "No changes to commit"
+          git push origin HEAD:prod
